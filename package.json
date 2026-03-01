@@ -1,6 +1,6 @@
 {
 	"name": "saneprint",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"type": "module",
 	"description": "The official saneprint CLI",
 	"author": "Karishma Garg",

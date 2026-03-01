@@ -8,7 +8,7 @@ const program = new Command();
 program
 	.name("saneprint")
 	.description("Opinionated scaffolding for Next.js")
-	.version("0.0.1")
+	.version("1.0.0")
 	.option("-p, --path <path>", "Path to create the project")
 	.option("-t, --type <type>", "Project type (next, mobile)")
 	.option("-n, --name <name>", "Website name")
