@@ -18,10 +18,13 @@ const THEME_ROLE_VARIABLES = {
 	primaryHover: "brand-hover",
 	secondary: "accent",
 	secondaryHover: "accent-hover",
+	tertiary: "tertiary",
+	tertiaryHover: "tertiary-hover",
 	danger: "danger",
 	dangerHover: "danger-hover",
 	onPrimary: "on-brand",
 	onSecondary: "on-accent",
+	onTertiary: "on-tertiary",
 	onDanger: "on-danger",
 	inputBackground: "input",
 	inputBorder: "input-border",
@@ -40,6 +43,12 @@ const BUTTON_INTENTS = [
 		baseColor: "var(--color-accent)",
 		hoverColor: "var(--color-accent-hover)",
 		foregroundColor: "var(--color-on-accent)",
+	},
+	{
+		name: "tertiary",
+		baseColor: "var(--color-tertiary)",
+		hoverColor: "var(--color-tertiary-hover)",
+		foregroundColor: "var(--color-on-tertiary)",
 	},
 	{
 		name: "danger",
@@ -147,10 +156,7 @@ function assertThemeColorScales(colors: unknown): void {
 	if (!isRecord(colors)) {
 		throw new Error("Invalid value at theme.colors. Expected an object.");
 	}
-
-	for (const [familyName, scale] of Object.entries(colors)) {
-		assertStringRecord(scale, `theme.colors.${familyName}`);
-	}
+	assertObjectShape(colors, DEFAULT_THEME.colors, "theme.colors");
 }
 
 function themeLine(name: string, value: string): string {
@@ -467,19 +473,31 @@ export function validateTheme(theme: unknown): EnterpriseTheme {
 		throw new Error("Invalid value at theme. Expected an object.");
 	}
 
-	if (typeof theme.version !== "string") {
+	const version = theme.version;
+	const colors = theme.colors;
+	const typography = theme.typography;
+	const themes = theme.themes;
+
+	if (typeof version !== "string") {
 		throw new Error("Invalid value at theme.version. Expected a string.");
 	}
 
-	assertThemeColorScales(theme.colors);
+	assertThemeColorScales(colors);
 	assertObjectShape(
-		theme.typography,
+		typography,
 		DEFAULT_THEME.typography,
 		"theme.typography",
 	);
-	assertObjectShape(theme.themes, DEFAULT_THEME.themes, "theme.themes");
+	assertObjectShape(themes, DEFAULT_THEME.themes, "theme.themes");
 
-	return theme as EnterpriseTheme;
+	return {
+		version,
+		colors: colors as EnterpriseTheme["colors"],
+		typography: typography as EnterpriseTheme["typography"],
+		themes: {
+			light: (themes as EnterpriseTheme["themes"]).light,
+		},
+	};
 }
 
 export function generateThemeCss(theme: EnterpriseTheme): string {

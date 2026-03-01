@@ -26,7 +26,16 @@ export interface EnterpriseTheme {
 	};
 }
 
-export type ThemeColors = Record<string, ThemeColorScale>;
+export interface ThemeColors {
+	primary: ThemePaletteScale;
+	secondary: ThemePaletteScale;
+	tertiary: ThemePaletteScale;
+	neutral: ThemeNeutralScale;
+	danger: ThemeIntentScale;
+	success: ThemeIntentScale;
+	warning: ThemeIntentScale;
+	info: ThemeIntentScale;
+}
 
 export interface ThemeTypography {
 	fontFamily: {
@@ -65,10 +74,13 @@ export interface ThemeRoles {
 	primaryHover: string;
 	secondary: string;
 	secondaryHover: string;
+	tertiary: string;
+	tertiaryHover: string;
 	danger: string;
 	dangerHover: string;
 	onPrimary: string;
 	onSecondary: string;
+	onTertiary: string;
 	onDanger: string;
 	inputBackground: string;
 	inputBorder: string;
@@ -107,9 +119,3 @@ export interface ThemeIntentScale {
 	"500": string;
 	"600": string;
 }
-
-export type ThemeColorScale =
-	| ThemePaletteScale
-	| ThemeNeutralScale
-	| ThemeIntentScale
-	| Record<string, string>;

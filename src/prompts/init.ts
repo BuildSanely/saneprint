@@ -117,8 +117,8 @@ export async function promptEnterpriseTheme(
 
 	p.note(
 		`I've created a canonical ${chalk.hex("#106D7C")("theme.json")} in your current directory.\n\n` +
-			`You can add or remove color families under ${chalk.hex("#106D7C")("colors")} to match the brand.\n` +
-			`Keep ${chalk.hex("#106D7C")("typography")} and ${chalk.hex("#106D7C")("themes.light")} intact, and make sure any token references point to colors that exist.\n` +
+			`Edit values only. Do not add, delete, or rename keys.\n` +
+			`The default schema now includes ${chalk.hex("#106D7C")("tertiary")} color tokens and semantic roles out of the box.\n` +
 			`This schema drives the generated Tailwind tokens, color roles, and button/input variants.`,
 		chalk.hex("#106D7C")("Custom Theme"),
 	);
