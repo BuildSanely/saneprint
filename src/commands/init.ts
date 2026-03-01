@@ -12,9 +12,20 @@ import { scaffoldProjectTemplate } from "../utils/template-source.js";
 import { getDefaultTheme } from "../utils/theme.js";
 
 export async function initCommand(options: CLIOptions) {
-	console.log(chalk.cyan("\n🚀 Welcome to saneprint\n"));
+	console.log(
+		`\n${chalk.bold(chalk.hex("#106D7C")("sane") + chalk.hex("#8D0D46")("print"))}`,
+	);
+	console.log(chalk.hex("#F1F1F1").dim("Opinionated scaffolding for Next.js"));
+	console.log(
+		chalk
+			.hex("#F1F1F1")
+			.dim("──────────────────────────────────────────────────"),
+	);
+	console.log();
 
-	// 1. Get Project Configuration
+	p.intro(
+		`${chalk.bgHex("#8D0D46").white(" saneprint ")}  Modern Project Scaffolder`,
+	);
 	const project = await promptProjectConfig(options);
 
 	// 2. Handle Enterprise Level 2 Design System
@@ -42,9 +53,9 @@ export async function initCommand(options: CLIOptions) {
 
 		p.note(
 			`Next steps:\n  cd ${project.path}\n  pnpm install\n  pnpm dev`,
-			"Success!",
+			chalk.hex("#106D7C")("Success!"),
 		);
-		p.outro(chalk.green("Happy coding!"));
+		p.outro(chalk.hex("#8D0D46")("Happy coding!"));
 	} catch (err: any) {
 		s.stop("Scaffolding failed.");
 		p.log.error(chalk.red(err.message || String(err)));

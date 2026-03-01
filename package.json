@@ -3,6 +3,16 @@
 	"version": "0.0.1",
 	"type": "module",
 	"description": "The official saneprint CLI",
+	"author": "Karishma Garg",
+	"license": "MIT",
+	"keywords": [
+		"nextjs",
+		"react",
+		"scaffolding",
+		"cli",
+		"architecture",
+		"ai-governance"
+	],
 	"main": "dist/index.js",
 	"bin": {
 		"saneprint": "dist/index.js"
@@ -11,8 +21,9 @@
 		"access": "public"
 	},
 	"scripts": {
-		"build": "tsc",
-		"dev": "tsc --watch",
+		"build": "tsup",
+		"dev": "tsup --watch",
+		"start": "node dist/index.js",
 		"lint": "eslint src/**/*.ts"
 	},
 	"dependencies": {
@@ -25,6 +36,7 @@
 	"devDependencies": {
 		"@types/node": "^20.0.0",
 		"@types/fs-extra": "^11.0.0",
-		"typescript": "^5.0.0"
+		"typescript": "^5.0.0",
+		"tsup": "^8.0.0"
 	}
 }

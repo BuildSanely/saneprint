@@ -116,10 +116,10 @@ export async function promptEnterpriseTheme(
 	await fs.writeJSON(themePath, defaultTheme, { spaces: 2 });
 
 	p.note(
-		`I've created a canonical ${chalk.cyan("theme.json")} in your current directory.\n\n` +
+		`I've created a canonical ${chalk.hex("#106D7C")("theme.json")} in your current directory.\n\n` +
 			`Edit values only. Do not add, delete, or rename keys.\n` +
 			`This schema drives the generated Tailwind tokens, color roles, and button/input variants.`,
-		"Custom Theme",
+		chalk.hex("#106D7C")("Custom Theme"),
 	);
 
 	while (true) {
