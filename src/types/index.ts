@@ -26,15 +26,7 @@ export interface EnterpriseTheme {
 	};
 }
 
-export interface ThemeColors {
-	primary: ThemePaletteScale;
-	secondary: ThemePaletteScale;
-	neutral: ThemeNeutralScale;
-	danger: ThemeIntentScale;
-	success?: ThemeIntentScale;
-	warning?: ThemeIntentScale;
-	info?: ThemeIntentScale;
-}
+export type ThemeColors = Record<string, ThemeColorScale>;
 
 export interface ThemeTypography {
 	fontFamily: {
@@ -115,3 +107,9 @@ export interface ThemeIntentScale {
 	"500": string;
 	"600": string;
 }
+
+export type ThemeColorScale =
+	| ThemePaletteScale
+	| ThemeNeutralScale
+	| ThemeIntentScale
+	| Record<string, string>;

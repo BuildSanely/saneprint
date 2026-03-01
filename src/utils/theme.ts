@@ -125,6 +125,34 @@ function assertObjectShape(
 	}
 }
 
+function isRecord(value: unknown): value is Record<string, unknown> {
+	return value !== null && typeof value === "object" && !Array.isArray(value);
+}
+
+function assertStringRecord(value: unknown, currentPath: string): void {
+	if (!isRecord(value)) {
+		throw new Error(`Invalid value at ${currentPath}. Expected an object.`);
+	}
+
+	for (const [key, entry] of Object.entries(value)) {
+		if (typeof entry !== "string") {
+			throw new Error(
+				`Invalid value at ${currentPath}.${key}. Expected a string.`,
+			);
+		}
+	}
+}
+
+function assertThemeColorScales(colors: unknown): void {
+	if (!isRecord(colors)) {
+		throw new Error("Invalid value at theme.colors. Expected an object.");
+	}
+
+	for (const [familyName, scale] of Object.entries(colors)) {
+		assertStringRecord(scale, `theme.colors.${familyName}`);
+	}
+}
+
 function themeLine(name: string, value: string): string {
 	return `  ${name}: ${value};`;
 }
@@ -435,7 +463,22 @@ export function getDefaultTheme(): EnterpriseTheme {
 }
 
 export function validateTheme(theme: unknown): EnterpriseTheme {
-	assertObjectShape(theme, DEFAULT_THEME, "theme");
+	if (!isRecord(theme)) {
+		throw new Error("Invalid value at theme. Expected an object.");
+	}
+
+	if (typeof theme.version !== "string") {
+		throw new Error("Invalid value at theme.version. Expected a string.");
+	}
+
+	assertThemeColorScales(theme.colors);
+	assertObjectShape(
+		theme.typography,
+		DEFAULT_THEME.typography,
+		"theme.typography",
+	);
+	assertObjectShape(theme.themes, DEFAULT_THEME.themes, "theme.themes");
+
 	return theme as EnterpriseTheme;
 }
 
