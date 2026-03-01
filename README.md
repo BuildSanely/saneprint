@@ -1,6 +1,9 @@
 # saneprint
 
-[![npm version](https://img.shields.io/npm/v/saneprint.svg)](https://www.npmjs.com/package/saneprint) [![npm downloads](https://img.shields.io/npm/dm/saneprint.svg)](https://www.npmjs.com/package/saneprint) [![license](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE) [![nextjs](https://img.shields.io/badge/Next.js-14+-black.svg)](https://nextjs.org)
+[![npm version](https://img.shields.io/npm/v/saneprint)](https://www.npmjs.com/package/saneprint)
+[![npm downloads](https://img.shields.io/npm/dm/saneprint)](https://www.npmjs.com/package/saneprint)
+[![license](https://img.shields.io/npm/l/saneprint)](./LICENSE)
+[![node](https://img.shields.io/node/v/saneprint)](https://nodejs.org)
 
 **saneprint** is a scaffolding tool that eliminates the constant AI back-and-forth. Start with a production-grade foundation that AI actually understands—ship features faster with zero refactoring tax.
 
@@ -251,4 +254,4 @@ Built by **Karishma Garg**, Product Engineer
 
 ## License
 
-MIT - Build something great.
+MIT. See [LICENSE](./LICENSE) for details.
