@@ -1,0 +1,30 @@
+{
+	"name": "saneprint",
+	"version": "0.0.1",
+	"type": "module",
+	"description": "The official saneprint CLI",
+	"main": "dist/index.js",
+	"bin": {
+		"saneprint": "dist/index.js"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"scripts": {
+		"build": "tsc",
+		"dev": "tsc --watch",
+		"lint": "eslint src/**/*.ts"
+	},
+	"dependencies": {
+		"commander": "^12.0.0",
+		"@clack/prompts": "^0.7.0",
+		"fs-extra": "^11.0.0",
+		"chalk": "^5.0.0",
+		"giget": "^1.2.0"
+	},
+	"devDependencies": {
+		"@types/node": "^20.0.0",
+		"@types/fs-extra": "^11.0.0",
+		"typescript": "^5.0.0"
+	}
+}
