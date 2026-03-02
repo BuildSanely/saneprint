@@ -4,6 +4,22 @@ All notable changes to saneprint will be documented here.
 
 ---
 
+## [1.0.1] - 2026-03-02
+
+### Changed
+
+- **README Improvements**: Refocused messaging on outcomes over technical details
+  - Emphasized velocity gains, reduced cognitive load, and faster feature delivery
+  - Added concrete time savings metrics (20 mins per feature, 5-10 hours on refactors, 2-3 days → 4 hours onboarding)
+  - Condensed from ~258 lines to ~140 lines for better scannability
+  - Replaced technical jargon with impact statements ("Work 3x faster", "Ship confidently from commit one")
+  - Added "What You Save" section with tangible benefits
+  - Improved "Why saneprint Works" section focusing on AI effectiveness and less back-and-forth
+  - Streamlined feature descriptions while maintaining key selling points
+  - Better example prompts for working with AI assistants
+
+---
+
 ## [1.0.0] - 2026-03-02
 
 ### Added
